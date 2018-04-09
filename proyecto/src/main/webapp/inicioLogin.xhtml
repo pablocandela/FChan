@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+     <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>FChan</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            
+            <p:dataScroller value="#{verPreguntas.preguntas}" var="pregunta" >
+                <h:outputText value="Titulo:" style="font-weight: bold" />
+                <h:outputText value="#{pregunta.titulo}" style="font-weight: bold" />                
+                <h:outputText value="Detalles: " style="font-weight: bold"/>                
+                <h:outputText value="#{pregunta.descripcion}" style="font-weight: bold"/>
+            </p:dataScroller>
+            
+            <br/>
+            <h:link outcome="crearPregunta" value="Crear Pregunta" />
+            <br/>
+            
+           <br/>
+           <h:link outcome="index" value="logout" />
+           <br/>
+            
+             
+            
+        </h:body>
+
+    </f:view>
+</html>

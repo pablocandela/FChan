@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 05-abr-2018 11:30:21 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.Usuario" table="usuario" schema="public" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" />
+        </property>
+        <property name="paterno" type="string">
+            <column name="paterno" />
+        </property>
+        <property name="materno" type="string">
+            <column name="materno" />
+        </property>
+        <property name="carrera" type="string">
+            <column name="carrera" />
+        </property>
+        <property name="fecharegistro" type="date">
+            <column name="fecharegistro" length="13" />
+        </property>
+        <property name="contrasena" type="string">
+            <column name="contrasena" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" />
+        </property>
+        <property name="rol" type="string">
+            <column name="rol" />
+        </property>
+        <set name="respuestas" table="respuesta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="username" />
+            </key>
+            <one-to-many class="modelo.Respuesta" />
+        </set>
+        <set name="preguntas" table="pregunta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="username" />
+            </key>
+            <one-to-many class="modelo.Pregunta" />
+        </set>
+    </class>
+</hibernate-mapping>
