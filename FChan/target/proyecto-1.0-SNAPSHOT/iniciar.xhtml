@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+     <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Login</title>
+            </f:facet>
+        </h:head>   
+            <h:body style="background: #308585">
+                <h:form>
+                    <p:tabMenu activeIndex="#{param.i}">
+                        <p:menuitem value="Home" outcome="index" icon="ui-icon-star">
+                            <f:param name="i" value="0" />
+                        </p:menuitem>
+                        <p:menuitem value="Registrarse" outcome="registrarse" icon="ui-icon-document">
+                            <f:param name="i" value="1" />
+                        </p:menuitem>
+                            <p:menuitem value="Iniciar sesión" outcome="iniciar" icon="ui-icon-document">
+                            <f:param name="i" value="2" />
+                            </p:menuitem>
+                    </p:tabMenu>
+                </h:form>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-4 ui-xs-4"></div>
+                    <div class="ui-g-12 ui-lg-4 ui-xs-4">
+                <h:form>
+                    <p:messages id="mensaje" autoUpdate="false"/>
+                    <p:panel  style="margin-bottom:40px" >
+                        <p:fieldset legend="FCHAN" style="font-weight: bold" >
+                            <center>
+                            <h:panelGrid columns="3" id="reg" style="font-weight:bold">
+                                <f:facet name="header">
+                                    <h2>Iniciar sesión</h2>
+                                </f:facet>
+                                <p:messages id="messages" showDetail="true" closable="true">
+                                    <p:autoUpdate/>
+                                </p:messages>
+                                <h:outputText value="Correo"/>
+                                <h:inputText value="#{loginController.username}"  /><br/>
+                                <h:outputText value="Contrasena"/>
+                                <h:inputSecret value="#{loginController.password}" /><br/>
+                            </h:panelGrid>
+                            </center>
+                        </p:fieldset>  
+                    </p:panel>
+                    <p:commandButton icon="ui-icon-check" value="login" update="reg" action="#{loginController.login}" iconPos=""/>
+                </h:form>
+                </div>
+                <div class="ui-g-12 ui-lg-4 ui-xs-4"></div>
+            </div>
+        </h:body>
+    </f:view>
+</html>
